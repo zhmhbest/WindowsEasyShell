@@ -21,5 +21,5 @@ For Each item In Split(PATH, ";")
 Next
 
 'Wscript.Echo "add"
-USER("PATH") = USER("PATH") + ";" + FIND
+USER("PATH") = FIND + ";" + USER("PATH")
 Wscript.Quit 0
