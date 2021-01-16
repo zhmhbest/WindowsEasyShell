@@ -6,5 +6,5 @@ ElseIf 2 = argc Then
 ElseIf 3 = argc Then
     Call CreateObject("WScript.Shell").Run(Chr(34) + argv(0) + Chr(34), CInt(argv(1)), argv(2))
 Else
-    Wscript.Echo "command [style] [wait]" : Wscript.Quit
+    Wscript.Echo "argv = <command> [style] [wait]" : Wscript.Quit
 End If

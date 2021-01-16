@@ -1,5 +1,5 @@
 Set argv = WScript.Arguments : argc = argv.Count
-If argc<>1 Then Wscript.Echo "directory" : Wscript.Quit 0
+If argc<>1 Then Wscript.Echo "argv = <path>" : Wscript.Quit 0
 Set WS = CreateObject("Wscript.Shell")
 Set USER = WS.Environment("user")
 Set SYSTEM = WS.Environment("system")
