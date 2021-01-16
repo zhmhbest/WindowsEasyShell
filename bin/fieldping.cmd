@@ -1,1 +1,1 @@
-@bash "%~dpn0.sh"
+@bash "%~dpn0.sh" %*
