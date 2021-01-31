@@ -10,9 +10,9 @@ while true; do
     readarray -d ',' -t filestat <<<$(stat -c '%Y,%s' "$filename")
     current_mod=${filestat[0]}
     current_len=${filestat[1]}
+    # echo "waiting: $current_mod"
     if (($last_mod != $current_mod)); then
         ((append_len=$current_len-$last_len))
-        # echo "change: $current_mod", $append_len"
         if (($append_len > 0)); then
             # 文件已经追加内容
             tail -c"$append_len" "$filename"
