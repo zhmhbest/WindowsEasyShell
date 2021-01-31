@@ -12,7 +12,7 @@ while true; do
     current_len=${filestat[1]}
     if (($last_mod != $current_mod)); then
         ((append_len=$current_len-$last_len))
-        # echo "change:$append_len"
+        # echo "change: $current_mod", $append_len"
         if (($append_len > 0)); then
             # 文件已经追加内容
             tail -c"$append_len" "$filename"
