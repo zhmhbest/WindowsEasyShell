@@ -4,4 +4,6 @@
 )
 @IF DEFINED aria2c @(
     aria2c -k 1M -x 16 -j 5 "%~1"
+) else (
+    start "" "https://sourceforge.net/projects/aria2/files/stable/aria2-1.19.0/aria2-1.19.0-win-64bit-build1.zip/download"
 )
