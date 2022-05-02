@@ -1,25 +1,35 @@
 Set argv = WScript.Arguments : argc = argv.Count
-If argc<>1 Then Wscript.Echo "argv = <path>" : Wscript.Quit 0
-Set WS = CreateObject("Wscript.Shell")
-Set USER = WS.Environment("user")
-Set SYSTEM = WS.Environment("system")
-PATH = USER("PATH") + ";" + SYSTEM("PATH")
+If argc<>1 Then Wscript.Echo "addpath <path>" : Wscript.Quit 0
 
-If "\" = Right(argv(0), 1) Then
-    FIND = Left(argv(0), Len(argv(0)) - 1)
-Else
-    FIND = argv(0)
-End If
-For Each item In Split(PATH, ";")
-    If "\" = Right(item, 1) Then
-        item = Left(item, Len(item) - 1)
+' 获取无分隔符结尾的路径
+Function getPurePath(path, sep)
+    If sep = Right(path, 1) Then
+        getPurePath = Left(path, Len(path) - 1)
+    Else
+        getPurePath =  path
     End If
+End Function
+
+' 待添加路径
+NADD = getPurePath(argv(0), "\")
+FIND = Lcase(NADD)
+
+' 获取已有环境
+Set WS = CreateObject("Wscript.Shell")
+Set USR = WS.Environment("user")   : PATH_USR = getPurePath(USR("PATH"), ";")
+Set SYS = WS.Environment("system") : PATH_SYS = getPurePath(SYS("PATH"), ";")
+PATH_ARR = Split(PATH_USR + ";" + PATH_SYS, ";")
+
+'检查环境是否已存在
+For Each item In PATH_ARR
+    item = Lcase(getPurePath(item, "\"))
     If FIND = item Then
-        'Wscript.Echo "exist"
-        Wscript.Quit 1
+        Wscript.Echo "exist"
+        Wscript.Quit 0
     End If
 Next
 
-'Wscript.Echo "add"
-USER("PATH") = FIND + ";" + USER("PATH")
+'添加环境
+Wscript.Echo "add"
+USR("PATH") = NADD + ";" + PATH_USR
 Wscript.Quit 0

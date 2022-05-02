@@ -1,19 +1,19 @@
 @ECHO OFF
 
-@REM �û�����Ŀ¼����
+@REM 用户数据目录清理
 FOR /F "usebackq delims=" %%f in (`DIR /A:D /B "%AppData%\JetBrains\"`) DO (
     IF EXIST "%AppData%\JetBrains\%%f" CALL :ClearDirectory "%AppData%\JetBrains\%%f"
 )
 
-@REM ע�������
+@REM 注册表清理
 REG DELETE "HKCU\SOFTWARE\JavaSoft\Prefs\jetbrains" /f >NUL 2>NUL
 
-@REM �����˳�
+@REM 结束退出
 ECHO Done!
 PAUSE>NUL
 GOTO :EOF
 
-@REM ����Ŀ¼
+@REM 清理目录
 :ClearDirectory
     PUSHD "%~1"
     @REM ================

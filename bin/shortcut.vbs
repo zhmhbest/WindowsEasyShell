@@ -24,8 +24,8 @@ ElseIf 8 = argc Then
     link.Description = argv(7)
     link.Save
 Else
-    WScript.Echo "argv = <name> <path>"
-    WScript.Echo "argv = <name> <path> <icon>"
-    WScript.Echo "argv = <name> <path> <icon> <dir> <arg> <win> <key> <desc>"
+    WScript.Echo "shortcut <name> <path>"
+    WScript.Echo "shortcut <name> <path> <icon>"
+    WScript.Echo "shortcut <name> <path> <icon> <dir> <arg> <win> <key> <desc>"
 End If
 WScript.Quit

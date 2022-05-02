@@ -4,5 +4,5 @@ IF 1 = argc Then
 ElseIf 2 = argc Then
     Call CreateObject("Shell.Application").ShellExecute(argv(0), argv(1), "", "runas", 1)
 Else
-    WScript.Echo "argv = <apppath> [params]": WScript.Quit
+    WScript.Echo "super <apppath> [params]": WScript.Quit
 End If

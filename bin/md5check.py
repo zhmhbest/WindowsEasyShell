@@ -2,6 +2,10 @@ import sys
 import os
 import hashlib
 
+if 1 == len(sys.argv):
+    print("md5check <file> [md5value]")
+    sys.exit(1)
+
 filename = sys.argv[1]
 
 if not os.path.exists(filename):
