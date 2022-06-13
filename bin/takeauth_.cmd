@@ -2,9 +2,10 @@
 @PUSHD "%1"
 @ECHO User:[%UserName%]
 @ECHO Work:[%CD%]
+@ECHO Drive:[%~d1]
 @PAUSE
 
-@IF "%~d0\" == "%CD%" (
+@IF "%~d1\" == "%CD%" (
     @FOR /F "usebackq delims=" %%f IN (`DIR /a:-h-s /b "%CD%"`) DO @(
         @ECHO [%%f]
         @REM 当前用户为所有者
